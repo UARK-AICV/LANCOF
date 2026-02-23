@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="LANCOF: Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance">
+  <meta property="og:title" content="LANCOF"/>
+  <meta property="og:description" content="Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance"/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image" content="static/images/pipeline.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="LANCOF">
+  <meta name="twitter:description" content="Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance">
+  <meta name="twitter:image" content="static/images/pipeline.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="LANCOF, video amodal completion, diffusion models, optical flow, text guidance, length-agnostic">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>LANCOF: Length-Agnostic Open-Vocab Video Amodal Completion</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+<!-- Hero / Title -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">LANCOF: Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://trqminh.github.io/" target="_blank">Minh Tran</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://uark-aicv.github.io/" target="_blank">Ngan Le</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Arkansas</span>
+            <br>
+            <span class="author-block">TMLR</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF link -->
+              <span class="link-block">
+                <a href="https://trqminh.github.io/data/lancof.pdf" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- GitHub link -->
+              <span class="link-block">
+                <a href="https://github.com/UARK-AICV/LANCOF" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser Video -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="teaser" autoplay controls muted loop playsinline height="100%">
+        <source src="static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        LANCOF enables <strong>length-agnostic</strong> video amodal completion by leveraging
+        optical flow as motion priors and text guidance as semantic priors, recovering occluded
+        object regions faithfully across arbitrarily long video sequences.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<!-- Abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Amodal perception enables humans to perceive entire objects even when parts are
+            occluded, a remarkable cognitive skill that artificial intelligence struggles to
+            replicate. Substantial advancements have been made in image amodal completion and
+            currently being advanced in video domain amodal completion thanks to the rapid
+            growth of diffusion models for visual synthesis.
+          </p>
+          <p>
+            While recent advances in video amodal completion show promise, existing approaches
+            suffer from two critical limitations: insufficient auxiliary information to guide
+            recovery of heavily occluded content, and inability to handle videos of arbitrary
+            length. We present <strong>LANCOF</strong> (Length-Agnostic Video Amodal Completion
+            via Diffusion Model with Text and Optical Flow Guidance), which addresses these
+            limitations through complementary prior knowledge. Our approach uses optical flow
+            as motion priors for consistent mask completion and text guidance as semantic priors
+            for accurate content reconstruction. A zero-shot generation pipeline with Temporal
+            Generation module and anchor-frame attention enables truly length-agnostic processing
+            without duration-specific training.
+          </p>
+          <p>
+            We also contribute <strong>LAVAT</strong>, a comprehensive dataset with long video
+            sequences and text descriptions as prior knowledge for heavy occlusion cases.
+            Extensive experiments show LANCOF achieves state-of-the-art performance on existing
+            benchmarks while demonstrating superior generalization to longer sequences, advancing
+            both training capabilities and evaluation standards for video amodal completion.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Overall Pipeline -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Method Overview</h2>
+        <img src="static/images/pipeline.png" alt="LANCOF pipeline overview"/>
+        <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
+          Overview of the LANCOF framework. Given an input video and a text query specifying
+          the object of interest, LANCOF first obtains visible masks via open-vocabulary
+          segmentation and SAM-2, then performs two-stage processing: (1) Video Amodal Mask
+          Segmentation with optical flow guidance, and (2) Video Amodal Texture Completion
+          with text guidance.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Stage 1 -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Stage 1: Video Amodal Mask Segmentation with Optical Flow Guidance</h2>
+        <img src="static/images/stage1_pipeline.png" alt="Stage 1 pipeline"/>
+        <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
+          The first stage predicts amodal masks that capture the complete spatial extent of
+          the object, including occluded regions. Optical flow vectors capture visible motion
+          patterns and are used to predict where occluded parts should be located based on
+          motion consistency. A Flow Prior Encoder fuses warped masks from adjacent frames
+          to provide deliberate motion guidance for each frame.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Stage 2 -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Stage 2: Video Amodal Texture Completion with Text Guidance</h2>
+        <img src="static/images/stage2_pipeline.png" alt="Stage 2 pipeline"/>
+        <h2 class="subtitle has-text-centered" style="margin-top:1rem;">
+          Conditioned on the predicted amodal masks, the second stage reconstructs the RGB
+          content of occluded regions. Text guidance provides a semantic prior through
+          pretrained diffusion models, encoding canonical object shapes and properties to
+          enable accurate reconstruction. Anchor-frame attention ensures temporal consistency
+          across arbitrary video lengths.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- LAVAT Dataset -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">LAVAT Dataset</h2>
+        <img src="static/images/dataset_creation.png" alt="LAVAT dataset creation"/>
+        <div class="content has-text-justified" style="margin-top:1rem;">
+          <p>
+            We contribute <strong>LAVAT</strong> (Length-Agnostic Video Amodal Completion
+            with Text Guidance), a comprehensive benchmark featuring long video sequences
+            paired with text descriptions. LAVAT addresses the limitation of existing
+            benchmarks that focus only on short clips (e.g., 25 frames), providing a
+            valuable resource for evaluating video amodal completion methods on extended
+            sequences with textual similarity evaluation.
+          </p>
+        </div>
+        <div class="columns is-centered" style="margin-top:1rem;">
+          <div class="column is-half">
+            <img src="static/images/lavat_chart1_length_compare.png" alt="Video length comparison"/>
+            <p class="subtitle has-text-centered">Video length distribution comparison.</p>
+          </div>
+          <div class="column is-half">
+            <img src="static/images/lavat_chart2_occlusion_hist.png" alt="Occlusion histogram"/>
+            <p class="subtitle has-text-centered">Occlusion level distribution in LAVAT.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Qualitative Results -->
+<section class="section hero is-small">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Qualitative Results</h2>
+      </div>
+    </div>
+  </div>
+  <div class="hero-body has-text-centered">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item">
+          <img src="static/images/quali_results_kubric.png" alt="Qualitative results on Kubric"/>
+          <h2 class="subtitle has-text-centered">Qualitative results on the Kubric benchmark.</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/quali_results_lavat.png" alt="Qualitative results on LAVAT"/>
+          <h2 class="subtitle has-text-centered">Qualitative results on our LAVAT dataset.</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/quali_results_taco.png" alt="Qualitative results on TACO"/>
+          <h2 class="subtitle has-text-centered">Qualitative results on the TACO benchmark.</h2>
+        </div>
+        <div class="item">
+          <img src="static/images/quali_result_itw.png" alt="In-the-wild qualitative results"/>
+          <h2 class="subtitle has-text-centered">Qualitative results on in-the-wild videos.</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Ablation Studies -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Ablation Studies</h2>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <img src="static/images/abla_flow_prior_quali.png" alt="Optical flow prior ablation"/>
+        <p class="subtitle has-text-centered">Effect of optical flow prior guidance.</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <img src="static/images/abla_text_guidance_quali.png" alt="Text guidance ablation"/>
+        <p class="subtitle has-text-centered">Effect of text guidance on texture completion.</p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-half has-text-centered">
+        <img src="static/images/abla_temporal_generation.png" alt="Temporal generation ablation"/>
+        <p class="subtitle has-text-centered">Ablation of the Temporal Generation module.</p>
+      </div>
+      <div class="column is-half has-text-centered">
+        <img src="static/images/abla_temporal_by_length.png" alt="Performance by video length"/>
+        <p class="subtitle has-text-centered">Performance across different video lengths.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{tran2025lancof,
+  title={Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance},
+  author={Tran, Minh and Le, Ngan},
+  journal={Transactions on Machine Learning Research},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This page was built using the
+            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>
+            adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            This website is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
