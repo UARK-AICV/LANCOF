@@ -57,7 +57,7 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>University of Arkansas</span>
             <br>
-            <span class="author-block">TMLR</span>
+            <span class="author-block">Preprint</span>
           </div>
 
           <div class="column has-text-centered">
@@ -100,7 +100,7 @@
         <source src="static/videos/teaser.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        LANCOF enables <strong>length-agnostic</strong> video amodal completion by leveraging
+        LANCOF enables length-agnostic open-vocab video amodal completion by leveraging
         optical flow as motion priors and text guidance as semantic priors, recovering occluded
         object regions faithfully across arbitrarily long video sequences.
       </h2>
@@ -226,7 +226,76 @@
             sequences with textual similarity evaluation.
           </p>
         </div>
-        <div class="columns is-centered" style="margin-top:1rem;">
+        <!-- Dataset stats table -->
+        <div class="table-container" style="margin-top:1.5rem;">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered">
+            <caption style="caption-side:top; font-weight:600; margin-bottom:0.5rem;">
+              Comparison of statistics with existing video amodal completion datasets.
+              For LAVAT, values are reported for the synthetic subset (S) and real subset (R).
+              # denotes "number of".
+            </caption>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Kubric</th>
+                <th>TACO-OvO</th>
+                <th><strong>LAVAT (S / R)</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="has-text-left"><strong>Video length</strong></td>
+                <td>Short</td>
+                <td>Short</td>
+                <td><strong>Long / Long</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left">&nbsp;&nbsp;· Min # frames</td>
+                <td>24</td>
+                <td>14</td>
+                <td><strong>91 / 41</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left">&nbsp;&nbsp;· Max # frames</td>
+                <td>24</td>
+                <td>77</td>
+                <td><strong>1,595 / 661</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left">&nbsp;&nbsp;· Mean # frames</td>
+                <td>24</td>
+                <td>19</td>
+                <td><strong>257 / 151</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left"><strong># Videos</strong></td>
+                <td>690</td>
+                <td>2,049</td>
+                <td><strong>2,658 / 100</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left"><strong># Total frames</strong></td>
+                <td>9,660</td>
+                <td>27,342</td>
+                <td><strong>684,037 / 15,139</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left"><strong>Occlusion rate (%)</strong></td>
+                <td>22.96</td>
+                <td>46.67</td>
+                <td><strong>46.83 / —</strong></td>
+              </tr>
+              <tr>
+                <td class="has-text-left"><strong>Text description</strong></td>
+                <td>✗</td>
+                <td>✗</td>
+                <td><strong>✓ / ✓</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="columns is-centered" style="margin-top:1.5rem;">
           <div class="column is-half">
             <img src="static/images/lavat_chart1_length_compare.png" alt="Video length comparison"/>
             <p class="subtitle has-text-centered">Video length distribution comparison.</p>
@@ -299,10 +368,6 @@
         <img src="static/images/abla_temporal_generation.png" alt="Temporal generation ablation"/>
         <p class="subtitle has-text-centered">Ablation of the Temporal Generation module.</p>
       </div>
-      <div class="column is-half has-text-centered">
-        <img src="static/images/abla_temporal_by_length.png" alt="Performance by video length"/>
-        <p class="subtitle has-text-centered">Performance across different video lengths.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -315,8 +380,8 @@
     <pre><code>@article{tran2025lancof,
   title={Length-Agnostic Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance},
   author={Tran, Minh and Le, Ngan},
-  journal={Transactions on Machine Learning Research},
-  year={2025}
+  journal={preprint},
+  year={2026}
 }</code></pre>
   </div>
 </section>
