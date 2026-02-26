@@ -1,21 +1,11 @@
-window.HELP_IMPROVE_VIDEOJS = false;
-
-
 $(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
-    var options = {
-			slidesToScroll: 1,
-			slidesToShow: 1,
-			loop: true,
-			infinite: true,
-			autoplay: true,
-			autoplaySpeed: 5000,
-    }
-
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
-
+  // Smooth scrolling for in-page anchor links.
+  $('a[href^="#"]').on('click', function(event) {
+    var targetId = $(this).attr('href');
+    if (!targetId || targetId === '#') return;
+    var target = $(targetId);
+    if (target.length === 0) return;
+    event.preventDefault();
+    $('html, body').animate({ scrollTop: target.offset().top - 10 }, 250);
+  });
 })
