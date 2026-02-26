@@ -128,7 +128,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
+        <source src="./static/my_videos/teaser.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle">
@@ -326,13 +326,19 @@
         <div class="content">
           <h2 class="title is-3">How does it work?</h2>
           <p>
-            The first stage of our pipeline generates amodal masks {A<sub>t</sub>} for an object, given its modal masks {M<sub>t</sub>} and pseudo-depth of the scene {D<sub>t</sub>} (which is obtained by running a monocular depth estimator on RGB video sequence {I<sub>t</sub>} ). The predicted amodal masks from the first stage are then sent as input to the second stage, along with the modal RGB content of the occluded object in consideration. The second stage then inpaints the occluded region and outputs the amodal RGB content {C<sub>t</sub>}
-           for the occluded object. Both stages employ a conditional latent diffusion framework with a 3D UNet backbone.
+            We first use SAM3 to localize and track the object of interest's visible mask. Then, the model
+            perform in two-stage prediction. <i>Amodal Mask Segmentation Stage</i>: The model uses optical flow as motion priors to infer occluded regions through motion consistency.
+            <i>Video Amodal Texture Completion Stage</i>: The second stage conducts amodal texture completion with text guidance as semantic priors, leveraging pretrained diffusion models 
+            to reconstruct accurate content based on canonical object shapes and properties.
           </p>
-          <video id="method" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/method.mp4"
-                    type="video/mp4">
-          </video>
+            <img id="method"
+                src="./static/my_images/stage1_pipeline.png"
+                height="100%"
+                alt="Method image">
+            <img id="method"
+                src="./static/my_images/stage2_pipeline.png"
+                height="100%"
+                alt="Method image">
         </div>
       </div>
       <!--/ How does it work?. -->
@@ -351,26 +357,17 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@inproceedings{chen2025diffvas,
-  title={Using Diffusion Priors for Video Amodal Segmentation},
-  author={Kaihua Chen and Deva Ramanan and Tarasha Khurana},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year={2025}
+  title={Open-Vocab Video Amodal Completion via Diffusion Models with Text and Optical Flow Guidance},
+  author={Minh Tran and Winstoun Bounsavy and Ngan Le},
+  booktitle={Preprint},
+  year={2026}
 }</code></pre>
   </div>
-</section>
+</section:>
 
 
 <footer class="footer">
   <div class="container">
-    <!-- <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/Kaihua-Chen" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content" style="text-align: center;">
